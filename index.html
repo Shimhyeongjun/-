@@ -1,1 +1,57 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>참교육의 숲 주민 찾기</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="page">
+      <section class="survey-box">
+        <header class="survey-header">
+          <h1>참교육의 숲 주민 찾기</h1>
+          <p>답변을 선택하면 다음 질문으로 넘어갑니다.</p>
+        </header>
 
+        <section id="question-view">
+          <div class="progress-line">
+            <span id="progress-text">Q1 / Q6</span>
+            <div class="progress-track">
+              <div id="progress-bar" class="progress-bar"></div>
+            </div>
+          </div>
+
+          <div class="question-card">
+            <p id="question-label">Q1</p>
+            <h2 id="question-title"></h2>
+          </div>
+
+          <div id="answer-list" class="answer-list"></div>
+        </section>
+
+        <section id="result-view" class="hidden">
+          <div class="result-card">
+            <p class="result-label">최종 결과</p>
+            <h2 id="main-result"></h2>
+            <p id="main-description"></p>
+
+            <div class="sub-result">
+              <strong>두 번째 성향</strong>
+              <p id="sub-result"></p>
+            </div>
+
+            <div class="score-box">
+              <strong>선택 점수</strong>
+              <ul id="score-list"></ul>
+            </div>
+          </div>
+
+          <button id="restart-button" class="restart-button" type="button">다시 하기</button>
+        </section>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
