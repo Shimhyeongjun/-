@@ -1,13 +1,31 @@
+:root {
+  --paper: #fffaf1;
+  --paper-strong: #ffffff;
+  --ink: #263326;
+  --muted: #66715f;
+  --line: #d8c8a9;
+  --leaf: #2f7d58;
+  --leaf-dark: #1f6044;
+  --shadow: 0 18px 42px rgba(35, 53, 38, 0.22);
+}
+
 * {
   box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
 }
 
 body {
   margin: 0;
   min-height: 100vh;
   font-family: "Malgun Gothic", "Apple SD Gothic Neo", system-ui, sans-serif;
-  color: #222;
-  background: #f4f4f4;
+  color: var(--ink);
+  background:
+    linear-gradient(rgba(35, 84, 70, 0.28), rgba(35, 84, 70, 0.28)),
+    url("assets/bg-village.png") center / cover fixed,
+    #a6d98a;
 }
 
 button {
@@ -18,33 +36,62 @@ button {
   width: min(100%, 760px);
   min-height: 100vh;
   margin: 0 auto;
-  padding: 24px;
+  padding: 22px;
   display: flex;
   align-items: center;
 }
 
 .survey-box {
   width: 100%;
-  padding: 28px;
-  border: 1px solid #d8d8d8;
-  border-radius: 6px;
-  background: #fff;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 18px;
+  background: rgba(255, 250, 241, 0.96);
+  box-shadow: var(--shadow);
 }
 
 .survey-header {
-  margin-bottom: 24px;
+  margin: 0;
+}
+
+.scene-banner {
+  height: 178px;
+  background:
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04), rgba(38, 51, 38, 0.18)),
+    url("assets/bg-beach.png") center 58% / cover;
+}
+
+.title-block {
+  padding: 22px 24px 20px;
+  border-bottom: 1px solid rgba(216, 200, 169, 0.78);
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: var(--leaf-dark);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: uppercase;
 }
 
 .survey-header h1 {
   margin: 0 0 8px;
-  font-size: 28px;
-  line-height: 1.25;
+  font-size: 30px;
+  line-height: 1.2;
+  word-break: keep-all;
 }
 
 .survey-header p {
   margin: 0;
-  color: #666;
-  line-height: 1.5;
+  color: var(--muted);
+  line-height: 1.55;
+  word-break: keep-all;
+}
+
+#question-view,
+#result-view {
+  padding: 22px 24px 24px;
 }
 
 .progress-line {
@@ -54,37 +101,39 @@ button {
 #progress-text {
   display: block;
   margin-bottom: 8px;
-  color: #555;
-  font-weight: 700;
+  color: var(--leaf-dark);
+  font-weight: 900;
 }
 
 .progress-track {
-  height: 8px;
+  height: 10px;
+  border: 1px solid rgba(95, 112, 80, 0.18);
   border-radius: 99px;
-  background: #e7e7e7;
+  background: #eadfca;
   overflow: hidden;
 }
 
 .progress-bar {
   width: 0;
   height: 100%;
-  background: #333;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--leaf), #84b957);
   transition: width 0.2s ease;
 }
 
 .question-card,
 .result-card {
   padding: 22px;
-  border: 1px solid #222;
-  border-radius: 4px;
-  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.94);
 }
 
 #question-label,
 .result-label {
   margin: 0 0 10px;
-  color: #555;
-  font-weight: 700;
+  color: var(--leaf-dark);
+  font-weight: 900;
 }
 
 #question-title {
@@ -102,30 +151,33 @@ button {
 
 .answer-button {
   width: 100%;
-  min-height: 64px;
-  padding: 14px 16px;
-  border: 1px solid #bbb;
-  border-radius: 4px;
-  background: #fff;
-  color: #222;
+  min-height: 68px;
+  padding: 15px 16px;
+  border: 1px solid #cbb78f;
+  border-radius: 14px;
+  background: var(--paper-strong);
+  color: var(--ink);
   cursor: pointer;
   display: grid;
-  grid-template-columns: 28px 1fr;
+  grid-template-columns: 30px 1fr;
   gap: 12px;
   align-items: center;
   text-align: left;
+  box-shadow: 0 7px 16px rgba(56, 47, 25, 0.08);
 }
 
 .answer-button:hover,
 .answer-button:focus-visible {
-  border-color: #222;
+  border-color: var(--leaf);
   outline: none;
 }
 
 .check-box {
-  width: 24px;
-  height: 24px;
-  border: 1px solid #222;
+  width: 26px;
+  height: 26px;
+  border: 2px solid var(--leaf);
+  border-radius: 8px;
+  color: var(--leaf-dark);
   display: grid;
   place-items: center;
   font-size: 16px;
@@ -139,69 +191,122 @@ button {
 }
 
 .answer-label {
-  font-weight: 800;
+  color: var(--leaf-dark);
+  font-weight: 900;
 }
 
 .hidden {
   display: none;
 }
 
+.result-card {
+  overflow: hidden;
+}
+
+.result-visual {
+  height: 150px;
+  margin: -22px -22px 20px;
+  background:
+    linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 250, 241, 0.2)),
+    url("assets/bg-lake.png") center 50% / cover;
+}
+
 .result-card h2 {
   margin: 0 0 12px;
-  font-size: 26px;
-  line-height: 1.35;
+  font-size: 28px;
+  line-height: 1.32;
+  word-break: keep-all;
 }
 
 .result-card p {
   margin: 0;
-  line-height: 1.65;
+  line-height: 1.7;
   word-break: keep-all;
 }
 
-.sub-result,
-.score-box {
-  margin-top: 18px;
-  padding-top: 18px;
-  border-top: 1px solid #d8d8d8;
-}
-
-.sub-result strong,
-.score-box strong {
-  display: block;
-  margin-bottom: 8px;
-}
-
-#score-list {
-  margin: 0;
-  padding-left: 20px;
-  line-height: 1.8;
-}
-
+.back-button,
 .restart-button {
   width: 100%;
   min-height: 52px;
   margin-top: 16px;
-  border: 1px solid #222;
-  border-radius: 4px;
-  background: #222;
-  color: #fff;
+  border-radius: 14px;
   cursor: pointer;
+  font-weight: 900;
+}
+
+.back-button {
+  border: 1px solid #cbb78f;
+  background: rgba(255, 255, 255, 0.78);
+  color: var(--ink);
+}
+
+.restart-button {
+  border: 1px solid var(--leaf-dark);
+  background: var(--leaf-dark);
+  color: #fff;
+}
+
+.back-button:disabled {
+  cursor: default;
 }
 
 @media (max-width: 560px) {
+  body {
+    background:
+      linear-gradient(rgba(23, 54, 45, 0.2), rgba(23, 54, 45, 0.2)),
+      url("assets/bg-forest.png") center top / cover fixed,
+      #a6d98a;
+  }
+
   .page {
-    padding: 14px;
+    min-height: 100svh;
+    padding: 12px;
+    align-items: stretch;
   }
 
   .survey-box {
-    padding: 18px;
+    min-height: calc(100svh - 24px);
+    display: flex;
+    flex-direction: column;
+    border-radius: 16px;
+  }
+
+  .scene-banner {
+    height: 132px;
+    background-position: center 52%;
+  }
+
+  .title-block {
+    padding: 18px 18px 16px;
   }
 
   .survey-header h1 {
     font-size: 24px;
   }
 
+  #question-view,
+  #result-view {
+    padding: 18px;
+  }
+
   #question-title {
     font-size: 21px;
+  }
+
+  .question-card,
+  .result-card {
+    padding: 18px;
+    border-radius: 12px;
+  }
+
+  .answer-button {
+    min-height: 72px;
+    padding: 14px;
+    border-radius: 12px;
+  }
+
+  .result-visual {
+    height: 130px;
+    margin: -18px -18px 18px;
   }
 }

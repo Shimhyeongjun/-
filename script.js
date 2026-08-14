@@ -94,8 +94,7 @@ const questionTitle = document.querySelector("#question-title");
 const answerList = document.querySelector("#answer-list");
 const mainResult = document.querySelector("#main-result");
 const mainDescription = document.querySelector("#main-description");
-const subResult = document.querySelector("#sub-result");
-const scoreList = document.querySelector("#score-list");
+const backButton = document.querySelector("#back-button");
 const restartButton = document.querySelector("#restart-button");
 
 function renderQuestion() {
@@ -107,13 +106,16 @@ function renderQuestion() {
   questionLabel.textContent = `Q${question.id}`;
   questionTitle.textContent = question.title;
   answerList.innerHTML = "";
+  backButton.disabled = currentIndex === 0;
+  backButton.classList.toggle("hidden", currentIndex === 0);
 
   question.answers.forEach((answer) => {
     const button = document.createElement("button");
     button.type = "button";
     button.className = "answer-button";
+    const selectedMark = selectedAnswers[currentIndex]?.label === answer.label ? "✓" : "";
     button.innerHTML = `
-      <span class="check-box">✓</span>
+      <span class="check-box">${selectedMark}</span>
       <span class="answer-text"><span class="answer-label">${answer.label}.</span> ${answer.text}</span>
     `;
 
@@ -177,24 +179,23 @@ function renderResult() {
   const scores = getScores();
   const rankedTypes = getRankedTypes(scores);
   const mainTypeNumber = rankedTypes[0];
-  const subTypeNumber = rankedTypes[1] || rankedTypes[0];
   const mainType = resultTypes[mainTypeNumber];
-  const subType = resultTypes[subTypeNumber];
 
   questionView.classList.add("hidden");
   resultView.classList.remove("hidden");
 
   mainResult.textContent = `유형 ${mainTypeNumber}. ${mainType.name}`;
   mainDescription.textContent = mainType.description;
-  subResult.textContent = `유형 ${subTypeNumber}. ${subType.name} - ${subType.description}`;
+}
 
-  scoreList.innerHTML = "";
+function goBackQuestion() {
+  if (currentIndex === 0) {
+    return;
+  }
 
-  Object.entries(resultTypes).forEach(([type, result]) => {
-    const item = document.createElement("li");
-    item.textContent = `유형 ${type} ${result.name}: ${scores[type]}점`;
-    scoreList.appendChild(item);
-  });
+  selectedAnswers[currentIndex] = undefined;
+  currentIndex -= 1;
+  renderQuestion();
 }
 
 function restartSurvey() {
@@ -205,6 +206,7 @@ function restartSurvey() {
   renderQuestion();
 }
 
+backButton.addEventListener("click", goBackQuestion);
 restartButton.addEventListener("click", restartSurvey);
 
 renderQuestion();
