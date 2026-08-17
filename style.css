@@ -30,6 +30,7 @@ body {
   background:
     linear-gradient(rgba(35, 84, 70, 0.2), rgba(35, 84, 70, 0.24)),
     url("assets/bg-village.png") center / cover fixed,
+    url("bg-village.png") center / cover fixed,
     #a6d98a;
 }
 
@@ -67,7 +68,8 @@ button {
   height: 178px;
   background:
     linear-gradient(to bottom, rgba(255, 255, 255, 0.03), rgba(38, 51, 38, 0.16)),
-    url("assets/bg-beach.png") center 58% / cover;
+    url("assets/bg-beach.png") center 58% / cover,
+    url("bg-beach.png") center 58% / cover;
 }
 
 .title-block {
@@ -261,7 +263,8 @@ button {
   margin: 0 -22px 20px;
   background:
     linear-gradient(to bottom, rgba(255, 255, 255, 0.02), rgba(255, 247, 223, 0.22)),
-    url("assets/bg-lake.png") center 50% / cover;
+    url("assets/bg-lake.png") center 50% / cover,
+    url("bg-lake.png") center 50% / cover;
   display: grid;
   place-items: end center;
   padding: 0 0 18px;
@@ -406,6 +409,7 @@ button {
     background:
       linear-gradient(rgba(23, 54, 45, 0.17), rgba(23, 54, 45, 0.18)),
       url("assets/bg-forest.png") center top / cover fixed,
+      url("bg-forest.png") center top / cover fixed,
       #a6d98a;
   }
 
