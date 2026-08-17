@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>참교육의 숲 주민 찾기</title>
+    <title>참둥이의 마을 유형 찾기</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -13,7 +13,7 @@
           <div class="scene-banner" aria-hidden="true"></div>
           <div class="title-block">
             <p class="eyebrow">village type test</p>
-            <h1>참교육의 숲 주민 찾기</h1>
+            <h1>참둥이의 마을 유형 찾기</h1>
             <p>답변을 선택하면 다음 질문으로 넘어갑니다.</p>
           </div>
         </header>
@@ -33,16 +33,21 @@
 
           <div id="answer-list" class="answer-list"></div>
 
-          <button id="back-button" class="back-button" type="button">뒤로가기</button>
+          <button id="back-button" class="back-button" type="button">이전으로 가기</button>
         </section>
 
-        <section id="result-view" class="hidden">
-          <div class="result-card">
-            <div class="result-visual" aria-hidden="true"></div>
+        <section id="result-view" class="hidden" aria-live="polite">
+          <article class="result-card">
+            <div class="result-visual" aria-hidden="true">
+              <span id="result-icon" class="result-icon"></span>
+            </div>
+
             <p class="result-label">최종 결과</p>
             <h2 id="main-result"></h2>
-            <p id="main-description"></p>
-          </div>
+            <div id="result-quote" class="speech-bubble result-quote"></div>
+            <div id="main-description" class="result-story"></div>
+            <div id="result-details" class="result-details"></div>
+          </article>
 
           <button id="restart-button" class="restart-button" type="button">다시 하기</button>
         </section>
